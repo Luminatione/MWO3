@@ -30,13 +30,7 @@ jobs:
         dotnet-version: 7.0
 
     - name: Build .NET App
-      run: dotnet build -c Release
+      run: dotnet build mwo3 -c Release
 
     - name: Publish .NET App
-      run: dotnet publish -c Release -o ./publish
-
-    - name: Archive Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: app-artifact
-        path: ./publish
+      run: dotnet publish mwo3 -c Release -o ./publish
