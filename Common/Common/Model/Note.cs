@@ -17,7 +17,7 @@ namespace Common.Model
         [Required, RegularExpression("^[a-zA-Z0-9]*$"), MaxLength(32), MinLength(4)]
         public string Title { get; set; } = string.Empty;
 
-        [MaxLength(short.MaxValue), AllowHtml]
+        [MaxLength(5000), AllowHtml]
         public string Text { get; set; } = string.Empty;
 
         [Required]

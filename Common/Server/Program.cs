@@ -13,9 +13,9 @@ builder.Services.AddRazorPages();
 
 builder.Host.UseContentRoot(Directory.GetCurrentDirectory());
 
-var connectionString = builder.Configuration.GetSection("LocalConnectionString").Value;
+var connectionString = builder.Configuration.GetSection("RemoteDbConnectionString").Value;
 
-builder.Services.AddDbContext<DataBaseContext>(e => e.UseNpgsql(connectionString));
+builder.Services.AddDbContext<DataBaseContext>(e => e.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<INoteService, NoteService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -52,7 +52,6 @@ using (var scope = app.Services.CreateScope())
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
